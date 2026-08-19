@@ -66,6 +66,7 @@ tells the computer to look inside the "arms" object:
 * arms.close(); -> Closes the gripper claw to grab items (RC3 channel).
 * arms.up();    -> Lifts the arm assembly upward (RC4 channel).
 * arms.down();  -> Lowers the arm assembly down to the floor (RC4 channel).
+  To set new angles, call arms = ServoArms(<openAngle>, <closeAngle>, <upAngle>, <downAngle>); 
 ------------------------------------------------------------------------
 4.5 ADVANCED MATH HELPERS (CONVERTING CENTIMETERS & DEGREES)
 ------------------------------------------------------------------------
