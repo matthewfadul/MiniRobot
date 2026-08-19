@@ -66,7 +66,34 @@ tells the computer to look inside the "arms" object:
 * arms.close(); -> Closes the gripper claw to grab items (RC3 channel).
 * arms.up();    -> Lifts the arm assembly upward (RC4 channel).
 * arms.down();  -> Lowers the arm assembly down to the floor (RC4 channel).
+------------------------------------------------------------------------
+4.5 ADVANCED MATH HELPERS (CONVERTING CENTIMETERS & DEGREES)
+------------------------------------------------------------------------
+Behind the scenes, your robot's motor encoders only count in "degrees of 
+wheel rotation." To make programming easy, the library automatically 
+converts these numbers into centimeters using your robot's wheel size! 
 
+If you are writing custom loops, you can use these two math helpers:
+
+* cm2d(distance_in_cm);
+  -> Converts Centimeters into Motor Degrees.
+  -> Use this when you want to know how many degrees your wheels must 
+     spin to travel a specific physical distance.
+  -> Example: float target_degrees = cm2d(20.1); 
+     (Since the wheel circumference is 20.1 cm, this returns 360.0 degrees)
+
+* d2cm(motor_degrees);
+  -> Converts Motor Degrees into Centimeters.
+  -> Use this when you read raw data from your motor encoders and want 
+     to print or display it as a real-world distance.
+  -> Example: float physical_distance = d2cm(180.0);
+     (This converts 180 degrees of wheel rotation and returns roughly 10.05 cm)
+
+* odom();
+  -> Returns the total distance the robot has traveled in centimeters 
+     since the current movement block started.
+  -> Example: OLED(odom()); 
+     (Displays your exact traveled distance live on the robot screen!)
 ------------------------------------------------------------------------
 5. ADVANCED SPEED & PID TUNING (FOR EXPERTS)
 ------------------------------------------------------------------------
